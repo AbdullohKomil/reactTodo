@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
   const handleDelete = (todoId) => {
-    const filteredTodos = todos.filter((todo)=>{
+    const filteredTodos = todos.filter(function(todo) {
       if (todo.id !== todoId) {
         return todo;
       } else if (todos.length <= 1) {
