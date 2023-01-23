@@ -1,14 +1,13 @@
 import 'react-toastify/dist/ReactToastify.css';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
   const handleDelete = (todoId) => {
-    const filteredTodos = todos.filter((todo) => {
+    const filteredTodos = todos.filter((todo)=>{
       if (todo.id !== todoId) {
-        return todo
-      } 
-      else if (todos.length <= 1) {
-        localStorage.removeItem('todos')
+        return todo;
+      } else if (todos.length <= 1) {
+        localStorage.removeItem('todos');
       }
     });
     setTodos([...filteredTodos]);
