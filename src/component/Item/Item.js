@@ -1,5 +1,5 @@
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 
 export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
   const handleDelete = (todoId) => {
