@@ -7,7 +7,7 @@ export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
       if (todo.id !== todoId) {
         return todo
       } 
-      if (todos.length <= 1) {
+      else if (todos.length <= 1) {
         localStorage.removeItem('todos')
       }
     });
