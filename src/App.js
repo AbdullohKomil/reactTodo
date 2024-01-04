@@ -1,11 +1,12 @@
 import { useRef } from 'react';
-import './assets/styles/index.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import './assets/styles/index.css';
 import { List } from './component/List';
 import { Item } from './component/Item/';
 import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Buttons } from './component/Buttons/Buttons';
 
 function App() {
   const [todos, setTodos] = useState(
@@ -31,10 +32,7 @@ function App() {
   return (
     <div>
       <h1 className='display-2 fw-bold text-center my-3'>TODO APP</h1>
-      <form
-        onSubmit={handleSubmit}
-        className='w-50 mx-auto p-5 shadow'
-      >
+      <form onSubmit={handleSubmit} className='w-50 mx-auto p-5 shadow todo__form'>
         <div className='input-group'>
           <input
             required
@@ -43,10 +41,7 @@ function App() {
             className='form-control'
             placeholder='Todo...'
           />
-          <button
-            className='btn btn-primary'
-            type='submit'
-          >
+          <button className='btn btn-primary' type='submit'>
             SEND
           </button>
         </div>
@@ -65,8 +60,9 @@ function App() {
           ))}
         </List>
       ) : (
-        <h2 className='text-center h2 mt-5'>Todolar mavjus emas</h2>
+        <h2 className='text-center h2 mt-5 pb-4 '>Todolar mavjus emas</h2>
       )}
+      <Buttons todos={todos} setTodos={setTodos} />
       <ToastContainer
         position='top-right'
         autoClose={3000}

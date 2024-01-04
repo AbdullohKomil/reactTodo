@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
   const handleDelete = (todoId) => {
-    const filteredTodos = todos.filter(function(todo) {
+    const filteredTodos = todos.filter(function (todo) {
       if (todo.id !== todoId) {
         return todo;
       } else if (todos.length <= 1) {
@@ -17,10 +17,13 @@ export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
 
   const handleEdit = (id, text) => {
     const newText = prompt('Yangi todoni kiriting', text);
-    const findedTodo = todos.find((todo) => todo.id === id);
-    findedTodo.text = newText;
-    setTodos([...todos]);
-    toast.warning('text almashtirildi!');
+    if (newText) {
+      const findedTodo = todos.find((todo) => todo.id === id);
+      findedTodo.text = newText;
+      setTodos([...todos]);
+      return toast.warning('text almashtirildi!');
+    }
+    return toast.error('text almashtirilmadi!');
   };
 
   const handleChange = (todoId) => {
@@ -56,10 +59,7 @@ export const Item = ({ text, id, isCompleted, todos, setTodos }) => {
       >
         EDIT
       </button>
-      <button
-        onClick={() => handleDelete(id)}
-        className='btn btn-danger'
-      >
+      <button onClick={() => handleDelete(id)} className='btn btn-danger'>
         DELETE
       </button>
     </li>
